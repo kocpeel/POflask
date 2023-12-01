@@ -3,7 +3,7 @@ from flask_testing import TestCase
 from main import app, users
 
 def create_app(self):
-    app.config['TESTING'] = True
+    app.config[''] = True
     return app
 
 def test_get_users(self):
