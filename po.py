@@ -14,7 +14,7 @@ def get_user(user_id):
    for user in users:
        if user['id'] == user_id:
            return jsonify(user), 200
-   return jsonify({'error': 'User not found'}), 404
+   return jsonify({'User not found'}), 404
 
 @app.route('/users', methods=['POST'])
 def create_user():
@@ -24,6 +24,12 @@ def create_user():
    return jsonify(new_user), 201
 
 @app.route('/users/<int:user_id>', methods=['PATCH'])
+def update_user(user_id):
+   for user in users:
+       if user['id'] == user_id:
+           user.update(request.get_json())
+           return jsonify(user), 204
+   return jsonify({'User not found'}), 404
 
 @app.route('/users/<int:user_id>', methods=['PUT'])
 
